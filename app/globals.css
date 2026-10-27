@@ -1,26 +1,86 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+  line-height: 1.6;
 }
+
+a { color: #4f46e5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navbar */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px; background: #111827; color: #fff;
+}
+.navbar .brand { font-weight: 700; font-size: 20px; color: #fff; }
+.navbar .links { display: flex; gap: 20px; }
+.navbar .links a { color: #d1d5db; }
+.navbar .links a:hover { color: #fff; text-decoration: none; }
+
+/* Content cards (home, post, dashboard) */
+main {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+main h1 { margin-top: 0; }
+article h2 { margin: 0 0 4px; font-size: 20px; }
+article small { color: #6b7280; }
+article:hover h2 a { text-decoration: underline; }
+
+/* Form fields */
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+}
+input:focus, textarea:focus {
+  outline: none; border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+input[type='checkbox'] { width: auto; }
+
+/* Buttons */
+button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: #4338ca; }
+
+/* Small buttons in the post list */
+li button { padding: 6px 10px; font-size: 12px; background: #6b7280; }
+li button:hover { background: #4b5563; }
+li button:last-child { background: #dc2626; }
+li button:last-child:hover { background: #b91c1c; }
+li { border-bottom: 1px solid #f0f0f0; }
+
+/* Login page */
+.auth-wrap {
+  min-height: calc(100vh - 56px);
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  padding: 16px;
+}
+.auth-card {
+  width: 100%; max-width: 380px; background: #fff;
+  border-radius: 16px; padding: 32px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  display: grid; gap: 12px;
+}
+.auth-card h2 { margin: 0; text-align: center; }
+.auth-card p.sub { margin: 0; text-align: center; color: #6b7280; font-size: 14px; }
+.auth-card .secondary { background: #fff; color: #4f46e5; border: 1px solid #4f46e5; }
+.auth-card .secondary:hover { background: #eef2ff; }
